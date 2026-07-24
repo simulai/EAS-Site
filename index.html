@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAS — Epistemic Architecture System</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text2: #8888a0;
+  --accent: #6c63ff;
+  --accent2: #ff6b6b;
+  --green: #4ecdc4;
+  --orange: #ffa726;
+  --yellow: #ffd54f;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'SF Mono','Fira Code','Cascadia Code','Consolas',monospace; line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(10,10,15,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+nav .logo { font-weight:700; font-size:1.1rem; letter-spacing:2px; }
+nav .logo span { color:var(--accent); }
+nav .links { display:flex; gap:1.5rem; }
+nav .links a { color:var(--text2); font-size:0.85rem; transition:color .2s; }
+nav .links a:hover { color:var(--text); text-decoration:none; }
+.hero { padding:8rem 2rem 4rem; text-align:center; }
+.hero h1 { font-size:3rem; font-weight:200; letter-spacing:6px; margin-bottom:1rem; }
+.hero h1 em { font-style:normal; color:var(--accent); font-weight:700; }
+.hero .sub { color:var(--text2); font-size:1rem; max-width:600px; margin:0 auto 2rem; }
+.hero .tagline { font-size:0.85rem; color:var(--accent); letter-spacing:3px; text-transform:uppercase; }
+.stats { display:flex; justify-content:center; gap:3rem; padding:2rem; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { font-size:2rem; font-weight:700; color:var(--accent); }
+.stat .label { font-size:0.75rem; color:var(--text2); letter-spacing:1px; text-transform:uppercase; }
+section { max-width:960px; margin:0 auto; padding:3rem 2rem; }
+section h2 { font-size:1.4rem; font-weight:600; margin-bottom:2rem; letter-spacing:2px; border-left:3px solid var(--accent); padding-left:1rem; }
+section h3 { font-size:1rem; color:var(--accent); margin:1.5rem 0 0.5rem; }
+.chain { position:relative; padding-left:2rem; }
+.chain::before { content:''; position:absolute; left:0.5rem; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),var(--accent2),var(--green)); }
+.chain-level { margin-bottom:2rem; position:relative; }
+.chain-level::before { content:''; position:absolute; left:-1.65rem; top:0.5rem; width:12px; height:12px; border-radius:50%; border:2px solid var(--accent); background:var(--bg); }
+.chain-level:nth-child(2)::before { border-color:var(--accent2); }
+.chain-level:nth-child(3)::before { border-color:var(--orange); }
+.chain-level:nth-child(4)::before { border-color:var(--green); }
+.chain-level:nth-child(5)::before { border-color:var(--yellow); }
+.level-tag { display:inline-block; font-size:0.7rem; padding:2px 8px; border-radius:3px; letter-spacing:1px; margin-bottom:0.5rem; }
+.level-0 .level-tag { background:rgba(108,99,255,0.15); color:var(--accent); }
+.level-1 .level-tag { background:rgba(255,107,107,0.15); color:var(--accent2); }
+.level-2 .level-tag { background:rgba(255,167,38,0.15); color:var(--orange); }
+.level-3 .level-tag { background:rgba(78,205,196,0.15); color:var(--green); }
+.level-4 .level-tag { background:rgba(255,213,79,0.15); color:var(--yellow); }
+.chain-level h3 { margin:0 0 0.3rem; font-size:0.95rem; }
+.chain-level p { font-size:0.82rem; color:var(--text2); margin-bottom:0.3rem; }
+.chain-level .status { font-size:0.75rem; display:inline-block; padding:1px 6px; border-radius:3px; margin-right:4px; }
+.s-axiom { background:rgba(78,205,196,0.15); color:var(--green); }
+.s-hypothesis { background:rgba(255,167,38,0.15); color:var(--orange); }
+.s-verified { background:rgba(108,99,255,0.15); color:var(--accent); }
+.s-progress { background:rgba(255,107,107,0.15); color:var(--accent2); }
+.s-paused { background:rgba(136,136,160,0.15); color:var(--text2); }
+.falsify { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.5rem; margin-top:1rem; }
+.falsify h4 { font-size:0.85rem; color:var(--accent2); margin-bottom:0.5rem; }
+.falsify li { font-size:0.8rem; color:var(--text2); margin-bottom:0.3rem; margin-left:1rem; }
+.dashboard { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.2rem; }
+.card h4 { font-size:0.85rem; color:var(--accent); margin-bottom:0.8rem; letter-spacing:1px; }
+.card .item { font-size:0.8rem; padding:0.4rem 0; border-bottom:1px solid rgba(42,42,58,0.5); display:flex; justify-content:space-between; align-items:center; }
+.card .item:last-child { border:none; }
+.card .item .badge { font-size:0.65rem; padding:1px 5px; border-radius:3px; }
+.badge-yes { background:rgba(78,205,196,0.15); color:var(--green); }
+.badge-maybe { background:rgba(255,167,38,0.15); color:var(--orange); }
+.badge-no { background:rgba(255,107,107,0.15); color:var(--accent2); }
+.badge-prog { background:rgba(108,99,255,0.15); color:var(--accent); }
+.compare { width:100%; border-collapse:collapse; margin-top:1rem; }
+.compare th { font-size:0.75rem; color:var(--text2); text-align:left; padding:0.5rem; border-bottom:1px solid var(--border); letter-spacing:1px; text-transform:uppercase; }
+.compare td { font-size:0.82rem; padding:0.5rem; border-bottom:1px solid rgba(42,42,58,0.3); }
+.compare .highlight { color:var(--green); font-weight:600; }
+.gantt-container { overflow-x:auto; margin-top:1rem; }
+.gantt { min-width:700px; }
+.gantt-row { display:flex; align-items:center; margin-bottom:0.5rem; }
+.gantt-label { width:160px; font-size:0.75rem; color:var(--text2); flex-shrink:0; text-align:right; padding-right:0.8rem; }
+.gantt-bar-area { flex:1; height:24px; position:relative; background:rgba(26,26,38,0.5); border-radius:4px; }
+.gantt-bar { position:absolute; height:20px; top:2px; border-radius:3px; font-size:0.65rem; line-height:20px; padding-left:6px; color:rgba(255,255,255,0.9); overflow:hidden; white-space:nowrap; }
+.gantt-header { display:flex; align-items:center; margin-bottom:0.3rem; }
+.gantt-header .gantt-label { font-size:0.65rem; color:var(--text2); letter-spacing:1px; text-transform:uppercase; }
+.gantt-ticks { flex:1; display:flex; justify-content:space-between; padding:0 2px; }
+.gantt-ticks span { font-size:0.6rem; color:var(--text2); }
+.gantt-branch { font-size:0.7rem; color:var(--text); font-weight:600; margin:1rem 0 0.3rem; padding-left:160px; letter-spacing:1px; }
+footer { text-align:center; padding:3rem 2rem; color:var(--text2); font-size:0.75rem; border-top:1px solid var(--border); max-width:960px; margin:0 auto; }
+footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
+@media(max-width:600px) {
+  nav .links { display:none; }
+  .hero h1 { font-size:2rem; }
+  .stats { gap:1.5rem; }
+  section { padding:2rem 1rem; }
+  .dashboard { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">E<span>A</span>S</div>
+  <div class="links">
+    <a href="#theory">推导链</a>
+    <a href="#status">状态</a>
+    <a href="#experiment">实验</a>
+    <a href="#timeline">时间线</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tagline">Epistemic Architecture System</div>
+  <h1>因为<em>有限</em>，所以<em>迭代</em></h1>
+  <p class="sub">从公理到实验的逻辑推导链。每一步标注限定范围，每一步可证伪。我们用真实的实验数据去拼接智能最基本的构造。</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">5</div><div class="label">推导层级</div></div>
+  <div class="stat"><div class="num">795</div><div class="label">知识节点</div></div>
+  <div class="stat"><div class="num">19</div><div class="label">Lean4 定理</div></div>
+  <div class="stat"><div class="num">24M</div><div class="label">模型参数</div></div>
+</div>
+
+<section id="theory">
+<h2>理论推导链</h2>
+<div class="chain">
+  <div class="chain-level level-0">
+    <div class="level-tag">PHILOSOPHY</div>
+    <h3>P1 有限性公理 + P2 迭代方法论</h3>
+    <p><strong>因为</strong> 任何物理可实现系统都是有限的（有限参数、有限算力、有限时间）</p>
+    <p><strong>所以</strong> 智能系统必须在有限资源下应对无限环境，只能通过迭代逐步降低认知损失</p>
+    <p><span class="status s-axiom">公理</span> 无需验证 · 适用于所有物理可实现系统</p>
+  </div>
+  <div class="chain-level level-1">
+    <div class="level-tag">EPISTEMOLOGY</div>
+    <h3>T6 智能 = 认知损失下降速率</h3>
+    <p><strong>因为</strong> P1 系统有限，认知损失永远存在 · P2 只能迭代降低损失</p>
+    <p><strong>所以</strong> I(S) = −dL/dt，L = 预测误差 + 压缩代价</p>
+    <p><strong>推论 T7</strong>：有限系统 → 有限智能上界 I(S) ≤ m²</p>
+    <p><span class="status s-verified">可操作定义</span> 可近似测量 · 不适用于非迭代系统</p>
+  </div>
+  <div class="chain-level level-2">
+    <div class="level-tag">SEMANTICS</div>
+    <h3>S1 语义场论 · S2 谱度量 · S3 语义相变修正版</h3>
+    <p><strong>因为</strong> 词的意义依赖上下文 = 关系网络 = 场（维特根斯坦"意义即使用"）</p>
+    <p><strong>所以</strong> 世界不是事实的总和，而是场的构型。意义在势场中，不在词中</p>
+    <p>S2：智商 = 本征谱结构（C, δ, H, Δ, κ）</p>
+    <p>S3（修正）：相变非必要条件 → 表征存在相结构 · 临界区特殊 · 架构 = 约束场</p>
+    <p><span class="status s-hypothesis">待验证</span> S2/S3 待实验验证 · 限定于连续状态空间系统</p>
+  </div>
+  <div class="chain-level level-3">
+    <div class="level-tag">ARCHITECTURE</div>
+    <h3>A1 OEV三位一体 · A2 HOD-EML · A3 LLM角色</h3>
+    <p><strong>因为</strong> P1+S1+T6 → 需要"让认知损失降得最快"的结构</p>
+    <p><strong>所以</strong> 在<strong>当前技术栈</strong>（数字硬件+反向传播）下，可能存在分形三层结构</p>
+    <p><strong>⚠️ 关键修正</strong>：OEV 是当前技术栈下的工作假设，不是普适真理</p>
+    <p>不同基底（忆阻器+SNN、生物脑）可能完全不同 · 不能先验排除任何基底-结构组合</p>
+    <p>A3：LLM角色从"仅外挂"降级为"经验问题" · 天花板在哪是经验问题</p>
+    <p><span class="status s-hypothesis">工作假设</span> 基底相关 · 待跨基底验证</p>
+  </div>
+  <div class="chain-level level-4">
+    <div class="level-tag">ENGINEERING</div>
+    <h3>E1 RCN-EASIT · E2 方案B Fractal-Callosal Routing</h3>
+    <p><strong>因为</strong> S1 需要连续场 · A1 需要分形结构 · A2 需要工程实现</p>
+    <p><strong>所以</strong> 双通道胶囊+胼胝体 · 自适应路由（基于语义一致性）</p>
+    <p>E1 40K steps Loss 4.39 vs MiniGPT 50K Loss 5.01（初步优势）</p>
+    <p>E2 方案B：路由信号 Sᵢ = cos(h_D, h_C)，仅2个可学习标量</p>
+    <p><span class="status s-progress">进行中</span> E1 训练中 · <span class="status s-paused">待E1</span> E2</p>
+  </div>
+</div>
+<div class="falsify">
+  <h4>可证伪点汇总</h4>
+  <ul>
+    <li>如果RCN本征谱与性能无关 → S2不成立</li>
+    <li>如果连续通道不如纯离散 → S1不必要</li>
+    <li>如果存在智能系统没有OEV → A1不必要</li>
+    <li>如果忆阻器+SNN低功耗下达到同等智能 → OEV不是必要条件</li>
+    <li>如果纯LLM在足够scale下达到AGI → A3不成立</li>
+    <li>如果临界区泛化不比非临界区好 → "临界区特殊"不成立</li>
+  </ul>
+</div>
+</section>
+
+<section id="status">
+<h2>项目状态</h2>
+<div class="dashboard">
+  <div class="card">
+    <h4>已确定</h4>
+    <div class="item"><span>P1/P2 哲学基础</span><span class="badge badge-yes">公理</span></div>
+    <div class="item"><span>T6/T7 认识论</span><span class="badge badge-yes">可操作</span></div>
+    <div class="item"><span>S1 语义场论</span><span class="badge badge-yes">框架确立</span></div>
+    <div class="item"><span>S3 语义相变修正</span><span class="badge badge-yes">与实验一致</span></div>
+    <div class="item"><span>Lean4 19定理</span><span class="badge badge-yes">0 sorry</span></div>
+    <div class="item"><span>RCN 40K Loss</span><span class="badge badge-yes">4.39</span></div>
+    <div class="item"><span>双通道+胼胝体涌现</span><span class="badge badge-yes">已验证</span></div>
+    <div class="item"><span>架构层 → 工作假设</span><span class="badge badge-yes">已修正</span></div>
+  </div>
+  <div class="card">
+    <h4>待验证</h4>
+    <div class="item"><span>A1 OEV三位一体</span><span class="badge badge-maybe">工作假设</span></div>
+    <div class="item"><span>A2 HOD-EML</span><span class="badge badge-maybe">待实验</span></div>
+    <div class="item"><span>A3 LLM角色</span><span class="badge badge-maybe">经验问题</span></div>
+    <div class="item"><span>S2 谱度量预测</span><span class="badge badge-maybe">待提取</span></div>
+    <div class="item"><span>RCN 50K完整训练</span><span class="badge badge-prog">进行中</span></div>
+    <div class="item"><span>方案B消融实验</span><span class="badge badge-maybe">待实施</span></div>
+  </div>
+  <div class="card">
+    <h4>承认不知道</h4>
+    <div class="item"><span>基底无关智能结构是否存在</span><span class="badge badge-no">开放</span></div>
+    <div class="item"><span>忆阻器+SNN能否达AGI</span><span class="badge badge-no">开放</span></div>
+    <div class="item"><span>生物脑是否满足OEV</span><span class="badge badge-no">未验证</span></div>
+    <div class="item"><span>LLM天花板在哪</span><span class="badge badge-no">经验问题</span></div>
+    <div class="item"><span>智能上界T7是否紧</span><span class="badge badge-no">未验证</span></div>
+  </div>
+</div>
+</section>
+
+<section id="experiment">
+<h2>实验对比</h2>
+<table class="compare">
+  <thead><tr><th>模型</th><th>参数量</th><th>架构</th><th>40K Loss</th><th>50K Loss</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td>MiniGPT</td><td>19.32M</td><td>标准 Transformer</td><td>~5.1</td><td>5.01</td><td>完成</td></tr>
+    <tr><td>RCN-EASIT</td><td>24.05M</td><td>双通道胶囊+胼胝体</td><td class="highlight">4.39</td><td>训练中</td><td>从step 5K恢复</td></tr>
+  </tbody>
+</table>
+<h3>方案B 设计</h3>
+<p style="font-size:0.82rem;color:var(--text2);">Fractal-Callosal Routing：per-token语义一致性路由 · Sᵢ = cos(h_D[i], h_C[i]) · αᵢ = σ(β·(S_ref − Sᵢ)) · 仅2个可学习标量 · Warmup 2000步 · 等E1完成后实施</p>
+</section>
+
+<section id="timeline">
+<h2>时间线推演</h2>
+<div class="gantt-container">
+<div class="gantt">
+  <div class="gantt-header">
+    <div class="gantt-label"></div>
+    <div class="gantt-ticks"><span>7/24</span><span>7/27</span><span>7/31</span><span>8/3</span><span>8/7</span></div>
+  </div>
+  <div class="gantt-branch">RCN训练</div>
+  <div class="gantt-row"><div class="gantt-label">50K训练恢复</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:8%;background:var(--accent);">3.5h</div></div></div>
+  <div class="gantt-row"><div class="gantt-label">样本生成对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:8%;width:5%;background:var(--accent);opacity:0.7;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label">本征谱提取</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:13%;width:8%;background:var(--accent);opacity:0.6;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label">方案B实现</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:21%;width:17%;background:var(--green);">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label">方案B训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:38%;width:17%;background:var(--green);opacity:0.7;">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label">最终对比报告</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:60%;width:7%;background:var(--yellow);"></div></div></div>
+  <div class="gantt-branch">理论完善</div>
+  <div class="gantt-row"><div class="gantt-label">推导链迭代</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:70%;background:var(--accent2);opacity:0.5;">持续</div></div></div>
+  <div class="gantt-row"><div class="gantt-label">Lean4扩展</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:20%;width:30%;background:var(--accent2);opacity:0.4;"></div></div></div>
+  <div class="gantt-branch">探索性研究</div>
+  <div class="gantt-row"><div class="gantt-label">忆阻器+SNN调研</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:10%;width:25%;background:var(--orange);opacity:0.5;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label">生物脑结构对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:35%;width:20%;background:var(--orange);opacity:0.4;"></div></div></div>
+  <div class="gantt-branch">日常运维</div>
+  <div class="gantt-row"><div class="gantt-label">话题追踪日报</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:70%;background:var(--text2);opacity:0.3;">每日</div></div></div>
+</div>
+</div>
+</section>
+
+<footer>
+  <p class="quote">"我们用真实的实验数据去拼接智能最基本的构造，无论怎样去探测。"</p>
+  <p>Epistemic Architecture System · simulai · 2026</p>
+  <p style="margin-top:0.5rem;"><a href="https://github.com/simulai/EAS">Private Repo</a> · <a href="https://github.com/simulai/EAS-Site">This Site</a></p>
+</footer>
+</body>
+</html>
