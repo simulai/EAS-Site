@@ -126,6 +126,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
       <a href="#status" data-en="Status">状态</a>
       <a href="#experiment" data-en="Experiments">实验</a>
       <a href="#timeline" data-en="Timeline">时间线</a>
+      <a href="#papers" data-en="Papers">论文</a>
     </div>
     <div class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</div>
   </div>
@@ -175,11 +176,10 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="level-tag">ARCHITECTURE</div>
     <h3 data-en="A1 OEV Trinity · A2 HOD-EML · A3 Role of LLM">A1 OEV三位一体 · A2 HOD-EML · A3 LLM角色</h3>
     <p data-en="<strong>Because</strong> P1+S1+T6 → we need the structure that 'reduces cognitive loss fastest'"><strong>因为</strong> P1+S1+T6 → 需要"让认知损失降得最快"的结构</p>
-    <p data-en="<strong>Therefore</strong> under the <strong>current tech stack</strong> (digital HW + backprop), a fractal tri-layer structure may exist"><strong>所以</strong> 在<strong>当前技术栈</strong>（数字硬件+反向传播）下，可能存在分形三层结构</p>
-    <p data-en="<strong>⚠️ Key Correction</strong>: OEV is a working hypothesis under the current tech stack, not a universal truth"><strong>⚠️ 关键修正</strong>：OEV 是当前技术栈下的工作假设，不是普适真理</p>
-    <p data-en="Different substrates (memristor+SNN, biological brain) may have entirely different optimal structures · No substrate-structure combination can be excluded a priori">不同基底（忆阻器+SNN、生物脑）可能完全不同 · 不能先验排除任何基底-结构组合</p>
+    <p data-en="<strong>✅ Upgraded</strong>: Theorem T5 (Functional Decodability) proves χ≥3 is a <em>combinatorial necessity</em>, not a design choice — any finite adapting system must have 3 functionally decodable semantic flows (Generator/Executor/Verifier), and V≠f(G,E)"> <strong>✅ 已升级</strong>：Theorem T5 (功能可解码性) 证明 χ≥3 是<em>组合必要性</em>，不是设计选择——任何有限适应系统必须有三个功能可解码的语义流（Generator/Executor/Verifier），且 V≠f(G,E)</p>
+    <p data-en="<strong>⚠️ But</strong>: The specific <em>implementation form</em> of OEV remains substrate-dependent — GPU → fractal tri-layer; memristor+SNN → event-driven sparse structure; biological brain → unknown"> <strong>⚠️ 但</strong>：OEV 的<em>具体实现形式</em>仍是基底相关的——GPU → 分形三层；忆阻器+SNN → 事件驱动稀疏结构；生物脑 → 未知</p>
     <p data-en="A3: LLM role downgraded from 'mere peripheral' to 'empirical question' · Where is the ceiling? That is empirical">A3：LLM角色从"仅外挂"降级为"经验问题" · 天花板在哪是经验问题</p>
-    <p><span class="status s-hypothesis" data-en="Working Hypothesis">工作假设</span> <span data-en="Substrate-dependent · Requires cross-substrate verification">基底相关 · 待跨基底验证</span></p>
+    <p><span class="status s-axiom" data-en="Combinatorial Necessity (T5)">组合必要性 (T5)</span> · <span class="status s-hypothesis" data-en="Implementation form: substrate-dependent">实现形式：基底相关</span></p>
   </div>
   <div class="chain-level level-4">
     <div class="level-tag">ENGINEERING</div>
@@ -196,8 +196,8 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <ul>
     <li data-en="If RCN eigen-spectrum is uncorrelated with performance → S2 fails">如果RCN本征谱与性能无关 → S2不成立</li>
     <li data-en="If continuous channel underperforms pure discrete → S1 unnecessary">如果连续通道不如纯离散 → S1不必要</li>
-    <li data-en="If an intelligent system exists without OEV → A1 unnecessary">如果存在智能系统没有OEV → A1不必要</li>
-    <li data-en="If memristor+SNN achieves equal intelligence at low power → OEV not necessary">如果忆阻器+SNN低功耗下达到同等智能 → OEV不是必要条件</li>
+    <li data-en="If a finite adapting system functions without V≠f(G,E) → T5 falsified (unlikely per proof)">如果有限适应系统在 V≠f(G,E) 不满足时仍运行 → T5 被证伪（证明看不太可能）</li>
+    <li data-en="If memristor+SNN achieves equal intelligence → OEV form differs, not OEV itself disproved">如果忆阻器+SNN达到同等智能 → 说明OEV实现形式不同，不否定OEV本身</li>
     <li data-en="If pure LLM reaches AGI at sufficient scale → A3 fails">如果纯LLM在足够scale下达到AGI → A3不成立</li>
     <li data-en="If critical-zone generalization is no better than non-critical → 'critical zone is special' fails">如果临界区泛化不比非临界区好 → "临界区特殊"不成立</li>
   </ul>
@@ -216,11 +216,13 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span data-en="Lean4 19 theorems">Lean4 19定理</span><span class="badge badge-yes">0 sorry</span></div>
     <div class="item"><span data-en="RCN 40K Loss">RCN 40K Loss</span><span class="badge badge-yes">4.39</span></div>
     <div class="item"><span data-en="Dual-ch. + callosum emerg.">双通道+胼胝体涌现</span><span class="badge badge-yes" data-en="Verified">已验证</span></div>
-    <div class="item"><span data-en="Arch. → working hypothesis">架构层 → 工作假设</span><span class="badge badge-yes" data-en="Corrected">已修正</span></div>
+    <div class="item"><span data-en="OEV χ≥3 necessity (T5)">OEV χ≥3 必要性 (T5)</span><span class="badge badge-yes" data-en="Proven">已证明</span></div>
+    <div class="item"><span data-en="Zenodo Papers Published">Zenodo 论文发表</span><span class="badge badge-yes">2 DOIs</span></div>
   </div>
   <div class="card">
     <h4 data-en="To Verify">待验证</h4>
-    <div class="item"><span>A1 OEV Trinity</span><span class="badge badge-maybe" data-en="Hypothesis">工作假设</span></div>
+    <div class="item"><span>A1 OEV Necessity (T5)</span><span class="badge badge-yes" data-en="Proven (T5)">已证明 (T5)</span></div>
+    <div class="item"><span data-en="OEV implementation form">OEV 实现形式</span><span class="badge badge-maybe" data-en="Substrate-dep.">基底相关</span></div>
     <div class="item"><span>A2 HOD-EML</span><span class="badge badge-maybe" data-en="Pending Exp.">待实验</span></div>
     <div class="item"><span data-en="A3 LLM Role">A3 LLM角色</span><span class="badge badge-maybe" data-en="Empirical">经验问题</span></div>
     <div class="item"><span data-en="S2 Spectral Prediction">S2 谱度量预测</span><span class="badge badge-maybe" data-en="Pending">待提取</span></div>
@@ -249,6 +251,38 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 </table>
 <h3 data-en="Plan B Design">方案B 设计</h3>
 <p style="font-size:0.82rem;color:var(--text2);" data-en="Fractal-Callosal Routing: per-token semantic consistency routing · Sᵢ = cos(h_D[i], h_C[i]) · αᵢ = σ(β·(S_ref − Sᵢ)) · Only 2 learnable scalars · 2000-step warmup · Awaiting E1 results before implementation">Fractal-Callosal Routing：per-token语义一致性路由 · Sᵢ = cos(h_D[i], h_C[i]) · αᵢ = σ(β·(S_ref − Sᵢ)) · 仅2个可学习标量 · Warmup 2000步 · 等E1完成后实施</p>
+</section>
+
+<section id="papers">
+<h2 data-en="Published Papers & Open Questions">发表论文与开放问题</h2>
+<h3 data-en="Published on Zenodo (CC-BY 4.0)">已发表于 Zenodo (CC-BY 4.0)</h3>
+<div class="dashboard" style="margin-bottom:2rem;">
+  <div class="card">
+    <h4 data-en="EAS Main Paper">EAS 主论文</h4>
+    <div class="item"><span data-en="Epistemic Axiomatic System: A Single-Axiom Foundation for Finite Cognition">Epistemic Axiomatic System: A Single-Axiom Foundation for Finite Cognition</span></div>
+    <div class="item"><span>Zhang, J. (2026)</span><span><a href="https://doi.org/10.5281/zenodo.21106945" target="_blank">10.5281/zenodo.21106945</a></span></div>
+    <div class="item"><span data-en="T0–T7 theorem chain · T5 proves χ≥3 combinatorial necessity">T0–T7 定理链 · T5 证明 χ≥3 组合必要性</span><span class="badge badge-yes">Preprint</span></div>
+  </div>
+  <div class="card">
+    <h4 data-en="Bridge Paper">Bridge 论文</h4>
+    <div class="item"><span data-en="The Static-Statistical Bridge: Connecting EAS with Epiplexity">The Static-Statistical Bridge: Connecting EAS with Epiplexity</span></div>
+    <div class="item"><span>Zhang, J. (2026)</span><span><a href="https://doi.org/10.5281/zenodo.21106935" target="_blank">10.5281/zenodo.21106935</a></span></div>
+    <div class="item"><span data-en="Theorems A/B/C: info bound, bridge functor, entropy decomp.">定理 A/B/C：信息下界、桥接函子、熵分解</span><span class="badge badge-yes">Preprint</span></div>
+  </div>
+</div>
+<h3 data-en="Three Blind Spots at the Frontier of Science">科学界三大盲区</h3>
+<div class="falsify" style="margin-bottom:1rem;">
+  <h4 data-en="1. Generalization Paradox">1. 泛化悖论</h4>
+  <p style="font-size:0.82rem;color:var(--text2);" data-en="Zhang et al. 2017: networks memorize 100% random labels, yet on real data they choose compression/generalization. Why? Information Bottleneck observes phase transition but cannot prove the underlying optimization dynamics.">Zhang et al. 2017：网络能100%记忆随机标签，但在真实数据上却选择压缩/泛化。为什么？信息瓶颈理论观测到相变，但无法证明底层优化动力学。</p>
+</div>
+<div class="falsify" style="margin-bottom:1rem;">
+  <h4 data-en="2. Mathematical Nature of Emergence">2. 涌现的数学本质</h4>
+  <p style="font-size:0.82rem;color:var(--text2);" data-en="Phase transitions observable empirically (Loss drops, capabilities unlock), but no first-principles derivation. Physics has Renormalization Group; deep learning lacks an equivalent rigorous tool for 'semantic phase transition'.">相变可在实验中观测（Loss突降、能力解锁），但缺乏第一性原理推导。物理学有重整化群；深度学习缺乏等价的严格数学工具处理"语义相变"。</p>
+</div>
+<div class="falsify" style="margin-bottom:1rem;">
+  <h4 data-en="3. Semantic Field → Concrete Neural Structure">3. 语义场 → 具体神经结构</h4>
+  <p style="font-size:0.82rem;color:var(--text2);" data-en="What does S1 'potential energy' correspond to in a neural network? Can cosine routing achieve optimal manifold projection? Constructing a Lyapunov function to prove convergence remains an open problem.">S1 的"势能"在神经网络中具体对应什么结构？余弦路由能否实现最优流形投影？构造李雅普诺夫函数证明收敛仍是开放问题。</p>
+</div>
 </section>
 
 <section id="timeline">
@@ -282,6 +316,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <p class="quote" data-en="&quot;We assemble the most fundamental constructs of intelligence with real experimental data, however we may probe.&quot;">"我们用真实的实验数据去拼接智能最基本的构造，无论怎样去探测。"</p>
   <p>Epistemic Architecture System · simulai · 2026</p>
   <p style="margin-top:0.5rem;"><a href="https://github.com/simulai/EAS">Private Repo</a> · <a href="https://github.com/simulai/EAS-Site">This Site</a></p>
+  <p style="margin-top:0.3rem;"><a href="https://doi.org/10.5281/zenodo.21106945">EAS Paper (Zenodo)</a> · <a href="https://doi.org/10.5281/zenodo.21106935">Bridge Paper (Zenodo)</a></p>
 </footer>
 
 <script>
