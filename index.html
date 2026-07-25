@@ -198,7 +198,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <p data-en="🎲 <strong>Plan C: Stochasticity as Discovery</strong> (from P1+S1): Randomness = <em>active search engine</em>. σdW explores → discovers attractors → must be captured. σ² ∝ dim(field)/dim(params)."><strong>🎲 方案C：随机性作为发现机制</strong>（P1+S1推导）：σdW主动搜索→发现吸引子→必须捕获。σ² ∝ dim(场)/dim(参数)。</p>
     <p data-en="🎯 <strong>Basal Ganglia = Selection Engine</strong> (functional necessity): Go (execute) / NoGo (suppress) / Switch (emergency cancel). Between V and E — not 4th component, but V→E functional interface. Mechanisms necessary, composition form substrate-dependent."><strong>🎯 基底神经节 = 选择引擎</strong>（功能必要）：Go（执行）/ NoGo（抑制）/ Switch（紧急切换）。位于V和E之间——不是第四组件，而是V→E的功能接口。机制必要，组合形式基底相关。</p>
     <p data-en="💰 <strong>Dopamine RPE = Learning Signal</strong>: Noise = exploration engine, RPE = selection engine, Hippocampus = consolidation engine. Complete discovery→evaluation→consolidation loop. RPE as global modulator (like temperature for chemistry)."><strong>💰 多巴胺RPE = 学习信号</strong>：噪声=探索引擎，RPE=选择引擎，海马体=巩固引擎。完整的发现→评估→巩固闭环。RPE是全局调制信号（如同温度之于化学反应）。</p>
-    <p><span class="status s-progress" data-en="In Progress">进行中</span> <span data-en="E1">E1</span> · <span class="status s-paused" data-en="Next">待E1</span> <span data-en="E2 routing">E2 路由</span> · <span class="status s-paused" data-en="Next">待E1</span> <span data-en="E3 σdW">E3</span> · <span class="status s-paused" data-en="Future">远期</span> <span data-en="E4 hippocampus">E4</span> · <span class="status s-paused" data-en="Future">远期</span> <span data-en="E5 Go/NoGo+RPE">E5</span> · <span class="status s-paused" data-en="Future">远期</span> <span data-en="E6 independent V">E6 独立V</span></p>
+    <p><span class="status s-progress" data-en="In Progress">进行中</span> <span data-en="E1">E1</span> · <span class="status s-paused" data-en="Next">待E1</span> <span data-en="E2 routing">E2 路由</span> · <span class="status s-paused" data-en="Next">待E1</span> <span data-en="E3 σdW">E3</span> · <span class="status s-paused" data-en="Future">远期</span> <span data-en="E4 hippocampus">E4</span> · <span class="status s-paused" data-en="Future">远期</span> <span data-en="E5 Go/NoGo+RPE">E5</span></p>
   </div>
 </div>
 <div class="falsify">
@@ -233,6 +233,8 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span data-en="Dual-ch. + callosum emerg.">双通道+胼胝体涌现</span><span class="badge badge-yes" data-en="Verified">已验证</span></div>
     <div class="item"><span data-en="OEV χ≥3 necessity (T5)">OEV χ≥3 必要性 (T5)</span><span class="badge badge-yes" data-en="Proven">已证明</span></div>
     <div class="item"><span data-en="Zenodo Papers Published">Zenodo 论文发表</span><span class="badge badge-yes">2 DOIs</span></div>
+    <div class="item"><span data-en="eas-mathlib 3 A-level theorems">eas-mathlib 3个A级定理</span><span class="badge badge-yes">0 sorry</span></div>
+    <div class="item"><span data-en="EAS derivation chain (7/25)">EAS推导链扩展(7/25)</span><span class="badge badge-yes">+6 modules</span></div>
   </div>
   <div class="card">
     <h4 data-en="To Verify">待验证</h4>
@@ -241,7 +243,8 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span>A2 HOD-EML</span><span class="badge badge-maybe" data-en="Pending Exp.">待实验</span></div>
     <div class="item"><span data-en="A3 LLM Role">A3 LLM角色</span><span class="badge badge-maybe" data-en="Empirical">经验问题</span></div>
     <div class="item"><span data-en="S2 Spectral Prediction">S2 谱度量预测</span><span class="badge badge-maybe" data-en="Pending">待提取</span></div>
-    <div class="item"><span data-en="RCN 50K Full Training">RCN 50K完整训练</span><span class="badge badge-prog" data-en="Running">进行中</span></div>
+    <div class="item"><span data-en="RCN 50K Training (20K/50K paused)">RCN 50K训练(20K/50K 暂停)</span><span class="badge badge-maybe" data-en="Paused - Mac offline">暂停-Mac离线</span></div>
+    <div class="item"><span data-en="eas-mathlib Mathlib build">eas-mathlib Mathlib编译</span><span class="badge badge-maybe" data-en="Blocked">等待Mac恢复</span></div>
     <div class="item"><span data-en="Plan B Ablation">方案B消融实验</span><span class="badge badge-maybe" data-en="Pending">待实施</span></div>
   </div>
   <div class="card">
@@ -261,7 +264,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <thead><tr><th data-en="Model">模型</th><th data-en="Params">参数量</th><th data-en="Architecture">架构</th><th>40K Loss</th><th>50K Loss</th><th data-en="Status">状态</th></tr></thead>
   <tbody>
     <tr><td>MiniGPT</td><td>19.32M</td><td data-en="Std. Transformer">标准 Transformer</td><td>~5.1</td><td>5.01</td><td data-en="Done">完成</td></tr>
-    <tr><td>RCN-EASIT</td><td>24.05M</td><td data-en="Dual-ch. Capsule + Callosum">双通道胶囊+胼胝体</td><td class="highlight">4.39</td><td data-en="Training">训练中</td><td data-en="Resume from 5K">从step 5K恢复</td></tr>
+    <tr><td>RCN-EASIT</td><td>24.05M</td><td data-en="Dual-ch. Capsule + Callosum">双通道胶囊+胼胝体</td><td class="highlight">4.39</td><td data-en="Paused @20K/50K">暂停@20K/50K</td><td data-en="Mac offline, checkpoint at 5K">Mac离线,checkpoint@5K</td></tr>
   </tbody>
 </table>
 <h3 data-en="Plan B Design">方案B 设计</h3>
@@ -306,23 +309,30 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 <div class="gantt">
   <div class="gantt-header">
     <div class="gantt-label"></div>
-    <div class="gantt-ticks"><span>7/24</span><span>7/27</span><span>7/31</span><span>8/3</span><span>8/7</span></div>
+    <div class="gantt-ticks"><span>7/25</span><span>7/28</span><span>8/1</span><span>8/4</span><span>8/8</span></div>
   </div>
   <div class="gantt-branch" data-en="RCN Training">RCN训练</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="50K Resume">50K训练恢复</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:8%;background:var(--accent);">3.5h</div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Sample Gen. Compare">样本生成对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:8%;width:5%;background:var(--accent);opacity:0.7;"></div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Eigen-spectrum Extract">本征谱提取</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:13%;width:8%;background:var(--accent);opacity:0.6;"></div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Implement">方案B实现</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:21%;width:17%;background:var(--green);" data-en="5 days">5天</div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Training">方案B训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:38%;width:17%;background:var(--green);opacity:0.7;" data-en="5 days">5天</div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Final Comparison Report">最终对比报告</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:60%;width:7%;background:var(--yellow);"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="50K Training">50K训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:12%;background:var(--accent);" data-en="20K/50K (paused)">20K/50K ⚠️暂停</div><div style="position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding-right:4px;font-size:0.6rem;color:var(--accent2);">Mac离线</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Checkpoint Recovery">恢复训练(从5K)</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent);opacity:0.5;" data-en="done">✅已完成</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Sample Gen. Compare">样本生成对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:35%;width:8%;background:var(--accent);opacity:0.7;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Eigen-spectrum Extract">本征谱提取</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:43%;width:10%;background:var(--accent);opacity:0.6;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Contrastive Learning">对比学习触发</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:53%;width:7%;background:var(--accent);opacity:0.5;" data-en="Auto">自动</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Implement">方案B实现</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:60%;width:14%;background:var(--green);" data-en="5 days">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Training">方案B训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:74%;width:14%;background:var(--green);opacity:0.7;" data-en="5 days">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Final Report">最终对比报告</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:88%;width:8%;background:var(--yellow);"></div></div></div>
+  <div class="gantt-branch" data-en="eas-mathlib">eas-mathlib形式化</div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase1: A-level Theorems">Phase1: A级定理</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent2);" data-en="3 theorems ready">✅3定理就绪</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Mathlib Build Verify">Mathlib编译验证</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:5%;width:8%;background:var(--accent2);opacity:0.7;" data-en="blocked">⚠️等Mac恢复</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase2: B-level Theorems">Phase2: B级定理</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:18%;width:20%;background:var(--accent2);opacity:0.5;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase3: Mathlib PR">Phase3: Mathlib贡献</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:42%;width:20%;background:var(--accent2);opacity:0.3;"></div></div></div>
   <div class="gantt-branch" data-en="Theory Refinement">理论完善</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Derivation Chain Iterate">推导链迭代</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:70%;background:var(--accent2);opacity:0.5;" data-en="Ongoing">持续</div></div></div>
-  <div class="gantt-row"><div class="gantt-label">Lean4 Extension</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:20%;width:30%;background:var(--accent2);opacity:0.4;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Derivation Chain">推导链扩展</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:80%;background:var(--accent2);opacity:0.5;" data-en="Ongoing: σdW+hippo+BG+pons">持续: σdW+海马体+基底节+脑桥</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="V Dual-Speed Design">V双速结构设计</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:25%;width:25%;background:var(--accent2);opacity:0.4;"></div></div></div>
   <div class="gantt-branch" data-en="Exploratory Research">探索性研究</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Memristor+SNN Survey">忆阻器+SNN调研</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:10%;width:25%;background:var(--orange);opacity:0.5;"></div></div></div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Brain Structure Comparison">生物脑结构对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:35%;width:20%;background:var(--orange);opacity:0.4;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Memristor+SNN Survey">忆阻器+SNN调研</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:15%;width:20%;background:var(--orange);opacity:0.5;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Brain Struct. Comparison">生物脑结构对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:40%;width:18%;background:var(--orange);opacity:0.4;"></div></div></div>
   <div class="gantt-branch" data-en="Daily Operations">日常运维</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Topic Tracking Daily">话题追踪日报</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:70%;background:var(--text2);opacity:0.3;" data-en="Daily">每日</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Topic Tracking Daily">话题追踪日报</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:80%;background:var(--text2);opacity:0.3;" data-en="Daily">每日</div></div></div>
 </div>
 </div>
 </section>
