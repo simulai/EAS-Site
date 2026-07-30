@@ -114,6 +114,11 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   section { padding:2rem 1rem; }
   .dashboard { grid-template-columns:1fr; }
 }
+
+.timeline-tabs { display:flex; gap:0.5rem; margin-bottom:1.5rem; }
+.timeline-tab { cursor:pointer; font-size:0.8rem; padding:6px 16px; border:1px solid var(--border); border-radius:4px; color:var(--text2); transition:all .2s; background:transparent; font-family:inherit; letter-spacing:1px; }
+.timeline-tab:hover { border-color:var(--accent); color:var(--text); }
+.timeline-tab.active { background:rgba(108,99,255,0.15); border-color:var(--accent); color:var(--accent); }
 </style>
 </head>
 <body>
@@ -249,8 +254,8 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span>A2 HOD-EML</span><span class="badge badge-maybe" data-en="Pending Exp.">待实验</span></div>
     <div class="item"><span data-en="A3 LLM Role">A3 LLM角色</span><span class="badge badge-maybe" data-en="Empirical">经验问题</span></div>
     <div class="item"><span data-en="S2 Spectral Prediction">S2 谱度量预测</span><span class="badge badge-maybe" data-en="Pending">待提取</span></div>
-    <div class="item"><span data-en="RCN 50K Training (20K/50K paused)">RCN 50K训练(20K/50K 暂停)</span><span class="badge badge-maybe" data-en="Paused - Mac offline">暂停-Mac离线</span></div>
-    <div class="item"><span data-en="eas-mathlib Mathlib build">eas-mathlib Mathlib编译</span><span class="badge badge-maybe" data-en="Blocked">等待Mac恢复</span></div>
+    <div class="item"><span data-en="RCN 50K Training (20K/50K)">RCN 50K训练(20K/50K)</span><span class="badge badge-maybe" data-en="To Resume">待恢复</span></div>
+    <div class="item"><span data-en="eas-mathlib Mathlib build">eas-mathlib Mathlib编译</span><span class="badge badge-maybe" data-en="Pending">待实施</span></div>
     <div class="item"><span data-en="Plan B Ablation">方案B消融实验</span><span class="badge badge-maybe" data-en="Pending">待实施</span></div>
   </div>
   <div class="card">
@@ -270,7 +275,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <thead><tr><th data-en="Model">模型</th><th data-en="Params">参数量</th><th data-en="Architecture">架构</th><th>40K Loss</th><th>50K Loss</th><th data-en="Status">状态</th></tr></thead>
   <tbody>
     <tr><td>MiniGPT</td><td>19.32M</td><td data-en="Std. Transformer">标准 Transformer</td><td>~5.1</td><td>5.01</td><td data-en="Done">完成</td></tr>
-    <tr><td>RCN-EASIT</td><td>24.05M</td><td data-en="Dual-ch. Capsule + Callosum">双通道胶囊+胼胝体</td><td class="highlight">4.39</td><td data-en="Paused @20K/50K">暂停@20K/50K</td><td data-en="Mac offline, checkpoint at 5K">Mac离线,checkpoint@5K</td></tr>
+    <tr><td>RCN-EASIT</td><td>24.05M</td><td data-en="Dual-ch. Capsule + Callosum">双通道胶囊+胼胝体</td><td class="highlight">4.39</td><td data-en="Paused @20K/50K">暂停@20K/50K</td><td data-en="Checkpoint at 5K, to resume">Checkpoint@5K, 待恢复</td></tr>
   </tbody>
 </table>
 <h3 data-en="Plan B Design">方案B 设计</h3>
@@ -378,6 +383,11 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 
 <section id="timeline">
 <h2 data-en="Timeline">时间线推演</h2>
+<div class="timeline-tabs">
+  <button class="timeline-tab active" onclick="switchTab('tab-730')" data-en-tab="7/30 Progress">7/30 进度</button>
+  <button class="timeline-tab" onclick="switchTab('tab-725')" data-en-tab="7/25 Plan">7/25 规划</button>
+</div>
+<div id="tab-730" class="timeline-panel" style="display:block;">
 <div class="gantt-container">
 <div class="gantt">
   <div class="gantt-header">
@@ -385,7 +395,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="gantt-ticks"><span>7/25</span><span>7/28</span><span>8/1</span><span>8/4</span><span>8/8</span><span>8/12</span></div>
   </div>
   <div class="gantt-branch" data-en="RCN Training">RCN训练</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="50K Training">50K训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:12%;background:var(--accent);" data-en="20K/50K (paused)">20K/50K ⚠️暂停</div><div style="position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding-right:4px;font-size:0.6rem;color:var(--accent2);">Mac离线</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="50K Training">50K训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:12%;background:var(--accent);" data-en="20K/50K (to resume)">20K/50K 待恢复</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Checkpoint Recovery">恢复训练(从5K)</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent);opacity:0.5;" data-en="done">✅已完成</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Sample Gen. Compare">样本生成对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:35%;width:8%;background:var(--accent);opacity:0.7;"></div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Eigen-spectrum Extract">本征谱提取</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:43%;width:10%;background:var(--accent);opacity:0.6;"></div></div></div>
@@ -398,6 +408,25 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <div class="gantt-row"><div class="gantt-label" data-en="Phase2: Capacity grad.">Phase2 容量梯度</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:4%;width:4%;background:var(--green);" data-en="done, null result">✅ 负结果</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Phase2b: Complexity scan">Phase2b 复杂度扫描</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:8%;width:6%;background:var(--green);" data-en="done, phase-transition signal">✅ 相变信号</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Phase2c: Fine scan">Phase2c 精细扫描</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:14%;width:12%;background:var(--orange);opacity:0.7;" data-en="In progress">🔄 进行中</div></div></div>
+</div>
+</div>
+</div>
+<div id="tab-725" class="timeline-panel" style="display:none;">
+<div class="gantt-container">
+<div class="gantt">
+  <div class="gantt-header">
+    <div class="gantt-label"></div>
+    <div class="gantt-ticks"><span>7/25</span><span>7/28</span><span>8/1</span><span>8/4</span><span>8/8</span><span>8/12</span></div>
+  </div>
+  <div class="gantt-branch" data-en="RCN Training">RCN训练</div>
+  <div class="gantt-row"><div class="gantt-label" data-en="50K Training">50K训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:12%;background:var(--accent);" data-en="20K/50K (to resume)">20K/50K 待恢复</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Checkpoint Recovery">恢复训练(从5K)</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent);opacity:0.5;" data-en="done">✅已完成</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Sample Gen. Compare">样本生成对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:35%;width:8%;background:var(--accent);opacity:0.7;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Eigen-spectrum Extract">本征谱提取</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:43%;width:10%;background:var(--accent);opacity:0.6;"></div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Contrastive Learning">对比学习触发</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:53%;width:7%;background:var(--accent);opacity:0.5;" data-en="Auto">自动</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Implement">方案B实现</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:60%;width:14%;background:var(--green);" data-en="5 days">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Plan B Training">方案B训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:74%;width:14%;background:var(--green);opacity:0.7;" data-en="5 days">5天</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Final Report">最终对比报告</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:88%;width:8%;background:var(--yellow);"></div></div></div>
   <div class="gantt-branch" data-en="eas-mathlib">eas-mathlib形式化</div>
   <div class="gantt-row"><div class="gantt-label" data-en="Phase1: A-level Theorems">Phase1: A级定理</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent2);" data-en="3 theorems ready">✅3定理就绪</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Mathlib Build Verify">Mathlib编译验证</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:5%;width:8%;background:var(--accent2);opacity:0.7;" data-en="blocked">⚠️等Mac恢复</div></div></div>
@@ -409,8 +438,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <div class="gantt-branch" data-en="Exploratory Research">探索性研究</div>
   <div class="gantt-row"><div class="gantt-label" data-en="Memristor+SNN Survey">忆阻器+SNN调研</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:15%;width:20%;background:var(--orange);opacity:0.5;"></div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Brain Struct. Comparison">生物脑结构对比</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:40%;width:18%;background:var(--orange);opacity:0.4;"></div></div></div>
-  <div class="gantt-branch" data-en="Daily Operations">日常运维</div>
-  <div class="gantt-row"><div class="gantt-label" data-en="Topic Tracking Daily">话题追踪日报</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:80%;background:var(--text2);opacity:0.3;" data-en="Daily">每日</div></div></div>
+</div>
 </div>
 </div>
 </section>
@@ -437,6 +465,18 @@ function toggleLang() {
     if (!el.dataset.i18nId) el.dataset.i18nId = id;
     if (!orig[id]) orig[id] = el.innerHTML;
     el.innerHTML = isEn ? el.dataset.en : orig[id];
+  });
+}
+
+function switchTab(tabId) {
+  document.querySelectorAll('.timeline-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.timeline-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).style.display = 'block';
+  // Find the button that triggered this
+  const tabs = document.querySelectorAll('.timeline-tab');
+  const panels = document.querySelectorAll('.timeline-panel');
+  panels.forEach((p, i) => {
+    if (p.id === tabId) tabs[i].classList.add('active');
   });
 }
 </script>
