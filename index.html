@@ -125,6 +125,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
       <a href="#theory" data-en="Chain">推导链</a>
       <a href="#status" data-en="Status">状态</a>
       <a href="#experiment" data-en="Experiments">实验</a>
+      <a href="#a1-verification" data-en="A1 Verification">A1验证</a>
       <a href="#timeline" data-en="Timeline">时间线</a>
       <a href="#papers" data-en="Papers">论文</a>
     </div>
@@ -140,9 +141,10 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 
 <div class="stats">
   <div class="stat"><div class="num">5</div><div class="label" data-en="Derivation Layers">推导层级</div></div>
-  <div class="stat"><div class="num">795</div><div class="label" data-en="Knowledge Nodes">知识节点</div></div>
+  <div class="stat"><div class="num">~1100</div><div class="label" data-en="Knowledge Nodes">知识节点</div></div>
   <div class="stat"><div class="num">19</div><div class="label" data-en="Lean4 Theorems">Lean4 定理</div></div>
   <div class="stat"><div class="num">24M</div><div class="label" data-en="Parameters">模型参数</div></div>
+  <div class="stat"><div class="num">16</div><div class="label" data-en="A1 Experiment Groups">A1 验证实验组</div></div>
 </div>
 
 <section id="theory">
@@ -235,10 +237,14 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span data-en="Zenodo Papers Published">Zenodo 论文发表</span><span class="badge badge-yes">2 DOIs</span></div>
     <div class="item"><span data-en="eas-mathlib 3 A-level theorems">eas-mathlib 3个A级定理</span><span class="badge badge-yes">0 sorry</span></div>
     <div class="item"><span data-en="EAS derivation chain (7/25)">EAS推导链扩展(7/25)</span><span class="badge badge-yes">+6 modules</span></div>
+    <div class="item"><span data-en="A1 Phase1 verified (C1-C4, z=23.0)">A1 Phase1 验证 ✅</span><span class="badge badge-yes">C1-C4, z=23.0</span></div>
+    <div class="item"><span data-en="Phase2b capacity phase-transition signal">Phase2b 容量相变信号 ✅</span><span class="badge badge-yes">K: 47→50</span></div>
+    <div class="item"><span data-en="Strictness grading (Ch.9)">严格程度分级（第九章）✅</span><span class="badge badge-yes" data-en="Done">完成</span></div>
   </div>
   <div class="card">
     <h4 data-en="To Verify">待验证</h4>
     <div class="item"><span>A1 OEV Necessity (T5)</span><span class="badge badge-yes" data-en="Proven (T5)">已证明 (T5)</span></div>
+    <div class="item"><span data-en="A1 Phase2c fine scan">A1 Phase2c 精细扫描</span><span class="badge badge-prog" data-en="In Progress">进行中</span></div>
     <div class="item"><span data-en="OEV implementation form">OEV 实现形式</span><span class="badge badge-maybe" data-en="Substrate-dep.">基底相关</span></div>
     <div class="item"><span>A2 HOD-EML</span><span class="badge badge-maybe" data-en="Pending Exp.">待实验</span></div>
     <div class="item"><span data-en="A3 LLM Role">A3 LLM角色</span><span class="badge badge-maybe" data-en="Empirical">经验问题</span></div>
@@ -271,6 +277,55 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 <p style="font-size:0.82rem;color:var(--text2);" data-en="Fractal-Callosal Routing: per-token semantic consistency routing · Sᵢ = cos(h_D[i], h_C[i]) · αᵢ = σ(β·(S_ref − Sᵢ)) · Only 2 learnable scalars · 2000-step warmup · Awaiting E1 results before implementation">Fractal-Callosal Routing：per-token语义一致性路由 · Sᵢ = cos(h_D[i], h_C[i]) · αᵢ = σ(β·(S_ref − Sᵢ)) · 仅2个可学习标量 · Warmup 2000步 · 等E1完成后实施</p>
 </section>
 
+
+<section id="a1-verification">
+<h2 data-en="A1 Axiom Verification">A1 公理验证实验</h2>
+<h3 data-en="Phase 1: Pre-experiment">Phase1 预实验</h3>
+<p style="font-size:0.82rem;color:var(--text2);" data-en="C1-C4 all passed, z=23.0, 528K params Transformer, 10 topics perfect clustering ARI=1.0">C1-C4 全部通过，z=23.0，528K 参数 Transformer，10 主题完美聚类 ARI=1.0</p>
+
+<h3 data-en="Phase 2: Capacity Gradient">Phase2 容量梯度</h3>
+<p style="font-size:0.82rem;color:var(--text2);" data-en="K=10 constant across all capacities — over-parameterized region, task too simple">K=10 恒定（过参数化区域，任务太简单）</p>
+
+<h3 data-en="Phase 2b: Complexity × Capacity Scan — 4 difficulties × 4 capacities = 16 groups">Phase2b 复杂度扫描：4 难度 × 4 容量 = 16 组</h3>
+<div style="margin:1rem 0;padding:1rem;background:rgba(108,99,255,0.08);border-radius:8px;border-left:3px solid var(--accent);">
+  <p style="font-size:0.82rem;margin-bottom:0.3rem;" data-en="Key: X50 Tiny K=47 < T=50 (first capacity-deficit signal)">关键发现：X50 Tiny K=47 < T=50（首个容量不足信号）</p>
+  <p style="font-size:0.82rem;margin-bottom:0.3rem;" data-en="Tiny→Small jump: K from 47 to 50, at ~78K→~657K params">Tiny→Small 跳变：K 从 47 到 50，发生在 ~78K→~657K params</p>
+  <p style="font-size:0.82rem;margin-bottom:0.3rem;" data-en="9/16 groups pass A1 verification">9/16 组通过 A1 验证</p>
+  <p style="font-size:0.82rem;margin-bottom:0.3rem;" data-en="Large models all failed to converge (CPU training budget), K=2 is artifact">Large 模型全部未收敛（CPU 训练预算不足），K=2 为伪影</p>
+  <p style="font-size:0.82rem;" data-en="C2 criterion needs expansion (K>30 reasonable for high topic counts)">C2 判据需扩展（高主题数时 K>30 合理）</p>
+</div>
+
+<table class="compare" style="font-size:0.78rem;">
+  <thead><tr>
+    <th>ExpID</th>
+    <th data-en="Difficulty">难度</th>
+    <th data-en="Capacity">容量</th>
+    <th data-en="Params">参数</th>
+    <th>K</th><th>K/T</th><th>ARI</th>
+    <th data-en="Verdict">判定</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>E10_Tiny</td><td>Easy(10T)</td><td>Tiny</td><td>78K</td><td>10</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>E10_Small</td><td>Easy(10T)</td><td>Small</td><td>657K</td><td>10</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>E10_Med</td><td>Easy(10T)</td><td>Med</td><td>3.4M</td><td>10</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr style="opacity:0.5"><td>E10_Large</td><td>Easy(10T)</td><td>Large</td><td>11M</td><td>2</td><td>0.20</td><td>0.015</td><td><span class="badge badge-no">❌</span></td></tr>
+    <tr><td>M20_Tiny</td><td>Med(20T)</td><td>Tiny</td><td>78K</td><td>20</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>M20_Small</td><td>Med(20T)</td><td>Small</td><td>657K</td><td>20</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>M20_Med</td><td>Med(20T)</td><td>Med</td><td>3.4M</td><td>20</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr style="opacity:0.5"><td>M20_Large</td><td>Med(20T)</td><td>Large</td><td>11M</td><td>2</td><td>0.10</td><td>−0.000</td><td><span class="badge badge-no">❌</span></td></tr>
+    <tr><td>H30_Tiny</td><td>Hard(30T)</td><td>Tiny</td><td>78K</td><td>30</td><td>1.00</td><td>0.998</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>H30_Small</td><td>Hard(30T)</td><td>Small</td><td>657K</td><td>30</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr><td>H30_Med</td><td>Hard(30T)</td><td>Med</td><td>3.4M</td><td>30</td><td>1.00</td><td>1.000</td><td><span class="badge badge-yes">✅</span></td></tr>
+    <tr style="opacity:0.5"><td>H30_Large</td><td>Hard(30T)</td><td>Large</td><td>11M</td><td>2</td><td>0.07</td><td>0.024</td><td><span class="badge badge-no">❌</span></td></tr>
+    <tr style="background:rgba(255,107,107,0.06)"><td>X50_Tiny</td><td>Ext(50T)</td><td>Tiny</td><td>78K</td><td class="highlight" style="color:var(--accent2)">47</td><td>0.94</td><td>0.713</td><td><span class="badge badge-no">❌</span></td></tr>
+    <tr style="background:rgba(255,167,38,0.06)"><td>X50_Small</td><td>Ext(50T)</td><td>Small</td><td>657K</td><td>50</td><td>1.00</td><td>0.996</td><td><span class="badge badge-maybe">⚠️C2</span></td></tr>
+    <tr style="background:rgba(255,167,38,0.06)"><td>X50_Med</td><td>Ext(50T)</td><td>Med</td><td>3.4M</td><td>51</td><td>1.02</td><td>0.971</td><td><span class="badge badge-maybe">⚠️C2</span></td></tr>
+    <tr style="opacity:0.5"><td>X50_Large</td><td>Ext(50T)</td><td>Large</td><td>11M</td><td>2</td><td>0.04</td><td>0.001</td><td><span class="badge badge-no">❌</span></td></tr>
+  </tbody>
+</table>
+<p style="font-size:0.72rem;color:var(--text2);margin-top:0.5rem;" data-en="Opacity-reduced rows: Large models not converged (CPU budget). Highlighted rows: Extreme difficulty phase-transition region."><span style="opacity:0.5">浅色行</span> = Large 未收敛（CPU 预算）。<span style="background:rgba(255,107,107,0.06);padding:1px 4px;border-radius:2px">红色高亮</span> = 容量不足信号。<span style="background:rgba(255,167,38,0.06);padding:1px 4px;border-radius:2px">橙色高亮</span> = C2 判据超限。</p>
+</section>
+
 <section id="papers">
 <h2 data-en="Published Papers & Open Questions">发表论文与开放问题</h2>
 <h3 data-en="Published on Zenodo (CC-BY 4.0)">已发表于 Zenodo (CC-BY 4.0)</h3>
@@ -286,6 +341,24 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
     <div class="item"><span data-en="The Static-Statistical Bridge: Connecting EAS with Epiplexity">The Static-Statistical Bridge: Connecting EAS with Epiplexity</span></div>
     <div class="item"><span>Zhang, J. (2026)</span><span><a href="https://doi.org/10.5281/zenodo.21106935" target="_blank">10.5281/zenodo.21106935</a></span></div>
     <div class="item"><span data-en="Theorems A/B/C: info bound, bridge functor, entropy decomp.">定理 A/B/C：信息下界、桥接函子、熵分解</span><span class="badge badge-yes">Preprint</span></div>
+  </div>
+  <div class="card">
+    <h4 data-en="EAS-IT Paper">EAS-IT 论文</h4>
+    <div class="item"><span>Epistemic Axiomatic System and Information Theory</span></div>
+    <div class="item"><span>Zhang, J. (2026)</span><span><a href="https://doi.org/10.5281/zenodo.21263548" target="_blank">10.5281/zenodo.21263548</a></span></div>
+    <div class="item"><span data-en="EAS + Information Theory unified framework">EAS + 信息论统一框架</span><span class="badge badge-yes">Preprint</span></div>
+  </div>
+  <div class="card">
+    <h4 data-en="DIPL Paper">DIPL 论文</h4>
+    <div class="item"><span>Dynamically Induced Partition Lattice</span></div>
+    <div class="item"><span>Zhang, J. (2026)</span><span class="badge badge-prog" data-en="Preprint">预印本</span></div>
+    <div class="item"><span data-en="Collective Mode partition lattice theory">Collective Mode 分区格理论</span><span class="badge badge-prog">Draft</span></div>
+  </div>
+  <div class="card">
+    <h4 data-en="Collective Mode Paper">Collective Mode 论文</h4>
+    <div class="item"><span>On Primacy of Collective Modes</span></div>
+    <div class="item"><span>Zhang, J. (2026)</span><span class="badge badge-prog" data-en="Lean4 Formalized">Lean4 已形式化</span></div>
+    <div class="item"><span data-en="Lean4 formalization of collective mode primacy">Lean4 形式化集体模式优先性</span><span class="badge badge-yes">0 sorry</span></div>
   </div>
 </div>
 <h3 data-en="Three Blind Spots at the Frontier of Science">科学界三大盲区</h3>
@@ -309,7 +382,7 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 <div class="gantt">
   <div class="gantt-header">
     <div class="gantt-label"></div>
-    <div class="gantt-ticks"><span>7/25</span><span>7/28</span><span>8/1</span><span>8/4</span><span>8/8</span></div>
+    <div class="gantt-ticks"><span>7/25</span><span>7/28</span><span>8/1</span><span>8/4</span><span>8/8</span><span>8/12</span></div>
   </div>
   <div class="gantt-branch" data-en="RCN Training">RCN训练</div>
   <div class="gantt-row"><div class="gantt-label" data-en="50K Training">50K训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:12%;background:var(--accent);" data-en="20K/50K (paused)">20K/50K ⚠️暂停</div><div style="position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding-right:4px;font-size:0.6rem;color:var(--accent2);">Mac离线</div></div></div>
@@ -320,6 +393,11 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
   <div class="gantt-row"><div class="gantt-label" data-en="Plan B Implement">方案B实现</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:60%;width:14%;background:var(--green);" data-en="5 days">5天</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Plan B Training">方案B训练</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:74%;width:14%;background:var(--green);opacity:0.7;" data-en="5 days">5天</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Final Report">最终对比报告</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:88%;width:8%;background:var(--yellow);"></div></div></div>
+  <div class="gantt-branch" data-en="A1 Verification">A1 验证实验</div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase1: Pre-exp">Phase1 预实验</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:4%;background:var(--green);" data-en="done">✅ C1-C4</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase2: Capacity grad.">Phase2 容量梯度</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:4%;width:4%;background:var(--green);" data-en="done, null result">✅ 负结果</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase2b: Complexity scan">Phase2b 复杂度扫描</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:8%;width:6%;background:var(--green);" data-en="done, phase-transition signal">✅ 相变信号</div></div></div>
+  <div class="gantt-row"><div class="gantt-label" data-en="Phase2c: Fine scan">Phase2c 精细扫描</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:14%;width:12%;background:var(--orange);opacity:0.7;" data-en="In progress">🔄 进行中</div></div></div>
   <div class="gantt-branch" data-en="eas-mathlib">eas-mathlib形式化</div>
   <div class="gantt-row"><div class="gantt-label" data-en="Phase1: A-level Theorems">Phase1: A级定理</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:5%;background:var(--accent2);" data-en="3 theorems ready">✅3定理就绪</div></div></div>
   <div class="gantt-row"><div class="gantt-label" data-en="Mathlib Build Verify">Mathlib编译验证</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:5%;width:8%;background:var(--accent2);opacity:0.7;" data-en="blocked">⚠️等Mac恢复</div></div></div>
@@ -339,9 +417,9 @@ footer .quote { font-style:italic; color:var(--text); margin-bottom:1rem; }
 
 <footer>
   <p class="quote" data-en="&quot;We assemble the most fundamental constructs of intelligence with real experimental data, however we may probe.&quot;">"我们用真实的实验数据去拼接智能最基本的构造，无论怎样去探测。"</p>
-  <p>Epistemic Architecture System · simulai · 2026</p>
+  <p>Epistemic Architecture System · simulai · 2026 · <span style="color:var(--text2);font-size:0.7rem">Updated 2026-07-30</span></p>
   <p style="margin-top:0.5rem;"><a href="https://github.com/simulai/EAS">Private Repo</a> · <a href="https://github.com/simulai/EAS-Site">This Site</a></p>
-  <p style="margin-top:0.3rem;"><a href="https://doi.org/10.5281/zenodo.21106945">EAS Paper (Zenodo)</a> · <a href="https://doi.org/10.5281/zenodo.21106935">Bridge Paper (Zenodo)</a></p>
+  <p style="margin-top:0.3rem;"><a href="https://doi.org/10.5281/zenodo.21106945">EAS Paper</a> · <a href="https://doi.org/10.5281/zenodo.21106935">Bridge Paper</a> · <a href="https://doi.org/10.5281/zenodo.21263548">EAS-IT Paper</a></p>
 </footer>
 
 <script>
